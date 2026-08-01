@@ -1,0 +1,33 @@
+{
+  "name": "artifact-to-pdf",
+  "version": "1.0.0",
+  "description": "Render a Claude artifact (URL or exported HTML) to a single, continuous, pixel-accurate PDF — no page cuts.",
+  "type": "module",
+  "bin": {
+    "artifact-to-pdf": "artifact-to-pdf.mjs"
+  },
+  "scripts": {
+    "test": "node test/selfcheck.mjs",
+    "postinstall": "playwright install chromium"
+  },
+  "keywords": [
+    "pdf",
+    "claude",
+    "artifact",
+    "html-to-pdf",
+    "playwright",
+    "single-page",
+    "no-page-breaks"
+  ],
+  "author": "Youssef Hesham",
+  "license": "MIT",
+  "dependencies": {
+    "playwright": "^1.62.1"
+  },
+  "devDependencies": {
+    "pdf-lib": "^1.17.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
