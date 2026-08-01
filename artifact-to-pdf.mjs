@@ -18,6 +18,7 @@ import path from 'node:path';
 const PX_PER_IN = 96;  // CSS reference: 96 px per inch
 const MAX_IN = 200;    // ISO 32000: 200in hard cap per side (14400pt)
 const MIN_SCALE = 0.1; // Playwright page.pdf() scale floor
+const REPO_URL = 'https://github.com/yheshamx/artifact-to-pdf';
 
 /**
  * @param {string} input  http(s) URL or path to an exported .html file
@@ -40,6 +41,8 @@ export async function artifactToPdf(input, opts = {}) {
     await autoScroll(page);                        // trigger lazy-loaded images/content
     await page.evaluate(() => (document.fonts ? document.fonts.ready : null));
     await page.waitForTimeout(250);
+
+    await stampFooter(page, REPO_URL); // fine-print credit at the very bottom, sized into the page
 
     // True content size in CSS px.
     const { w, h } = await page.evaluate((minW) => {
@@ -101,6 +104,25 @@ async function autoScroll(page) {
       }, 40);
     });
   });
+}
+
+// Append a small, muted, centered credit line (a real clickable link in the PDF)
+// to the end of the flow so it lands at the bottom of the single page.
+async function stampFooter(page, url) {
+  await page.evaluate((u) => {
+    const el = document.createElement('div');
+    el.setAttribute('data-artifact-to-pdf-stamp', '');
+    el.style.cssText =
+      'margin:0;padding:16px 12px;text-align:center;'
+      + 'font:400 10px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;'
+      + 'color:rgba(130,130,140,.85);letter-spacing:.2px;';
+    const a = document.createElement('a');
+    a.href = u;
+    a.textContent = 'Generated with artifact-to-pdf · ' + u.replace(/^https?:\/\//, '');
+    a.style.cssText = 'color:inherit;text-decoration:none;';
+    el.appendChild(a);
+    document.body.appendChild(el);
+  }, url);
 }
 
 function defaultOut(input) {
