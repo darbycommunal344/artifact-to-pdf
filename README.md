@@ -4,21 +4,36 @@ Render a **Claude artifact** (or any web page / exported HTML) into a **single, 
 
 A Claude artifact is just HTML/CSS/JS rendered by Chromium. This tool loads it in headless Chromium, measures the true full content size, and emits **one page of exactly that size**. Because it's the same engine that renders the artifact in your browser, the PDF looks like what you see in the viewer — just as one uninterrupted scroll.
 
+Use it two ways: as a **Claude Code skill** (`/artifact-to-pdf`) or as a plain **CLI**.
+
 ## Why one page (no page cuts)
 
 Normal HTML→PDF tools slice your content into A4/Letter pages. An artifact isn't a paginated document — it's a scroll. So instead of paginating, `artifact-to-pdf` sets the PDF's single page height to the artifact's full height. You get the scroll, frozen into a PDF.
 
-## Install
+## Use it as a Claude Code skill (`/artifact-to-pdf`)
+
+Drop the repo into your skills folder and install once:
+
+```bash
+git clone https://github.com/yheshamx/artifact-to-pdf.git ~/.claude/skills/artifact-to-pdf
+cd ~/.claude/skills/artifact-to-pdf && npm install   # one-time; downloads a bundled Chromium (~120MB)
+```
+
+Restart Claude Code so it picks up the new skill, then:
+
+```
+/artifact-to-pdf ./my-artifact.html
+```
+
+Claude runs the bundled converter and hands you back the one-page PDF. Note: a fresh clone isn't *instant* — the one-time `npm install` downloads Chromium — but after that every run is ready.
+
+## Use it as a CLI
 
 ```bash
 git clone https://github.com/yheshamx/artifact-to-pdf.git
 cd artifact-to-pdf
 npm install        # also downloads a bundled Chromium (~120MB) via Playwright
-```
 
-## Usage
-
-```bash
 # from an exported .html file (best fidelity for a Claude artifact)
 node artifact-to-pdf.mjs ./my-artifact.html -o my-artifact.pdf
 
@@ -29,12 +44,7 @@ node artifact-to-pdf.mjs https://example.com -o page.pdf
 node artifact-to-pdf.mjs ./my-artifact.html --width 1440 --dsf 2
 ```
 
-Or install it as a command:
-
-```bash
-npm link
-artifact-to-pdf ./my-artifact.html -o out.pdf
-```
+Or install it as a global command with `npm link`, then `artifact-to-pdf ./my-artifact.html -o out.pdf`.
 
 ### Options
 
